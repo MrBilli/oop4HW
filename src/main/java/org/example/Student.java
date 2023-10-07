@@ -5,23 +5,22 @@ import java.util.Comparator;
 import java.util.List;
 
 // Абстрактный класс для представления студента
-class Student {
-    protected String name;
+class Student extends User{
 
-    public Student(String name) {
+    public Student(String name, String surname, String patronymic) {
         this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
     }
 
-    public String getName() {
-        return name;
-    }
-}
-class StudentExtended extends Student{
-    public StudentExtended(String name) {
-        super(name);
 
-    }
 }
+//class StudentExtended extends Student{
+//    public StudentExtended(String name) {
+//        super(name);
+//
+//    }
+//}
 
 // Параметризованный класс для представления группы студентов
 class User {
@@ -29,11 +28,7 @@ class User {
     protected String surname;
     protected String patronymic;
 
-    public User(String name, String surname, String patronymic) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-    }
+    public User(){};
 
     @Override
     public String toString() {
