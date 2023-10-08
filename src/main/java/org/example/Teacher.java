@@ -68,19 +68,20 @@ class Teacher extends User {
         TeacherController newTeacher = new TeacherController();
         while (true) {
             String name = newTeacher.setNameTeacher();
-            if (name.equals("q")) break;
-            this.name = name;
+            if (!name.equals("q"))
+            this.name = name; break;
         }
         while (true) {
             String surname = newTeacher.setSurnameTeacher();
-            if (surname.equals("q")) break;
-            this.surname = surname;
+            if (!surname.equals("q"))
+            this.surname = surname;break;
         }
         while (true) {
             String patronymic = newTeacher.setPatronymicTeacher();
-            if (patronymic.equals("q")) break;
-            this.patronymic = group.nameGroup;
+            if (!patronymic.equals("q"))
+            this.patronymic = patronymic;break;
         }
+        this.studyGroup = group.nameGroup;
     }
 }
 
@@ -161,10 +162,13 @@ class TeacherController implements TeachersViev {
             name = console.nextLine();
             if (name.equals("q"))
                 return "q";
+            if (name.isEmpty())
+            {                    System.out.println("The name must not contain null. Try again or q to exit: ");
+                return setNameTeacher();}
             for (int i = 0; i < name.length(); i++) {
                 if (Character.isDigit(name.charAt(i))) {
                     System.out.println("The name must not contain numbers. Try again or q to exit: ");
-                    setNameTeacher();
+                    return setNameTeacher();
                 }
             }
 
@@ -179,11 +183,13 @@ class TeacherController implements TeachersViev {
             System.out.println("Input surname or q to exit: ");
             surname = console.nextLine();
             if (surname.equals("q"))
-                return "q";
+                return "q";            if (surname.isEmpty())
+            {                    System.out.println("The surname must not contain null. Try again or q to exit: ");
+                return setNameTeacher();}
             for (int i = 0; i < surname.length(); i++) {
                 if (Character.isDigit(surname.charAt(i))) {
                     System.out.println("The surname must not contain numbers. Try again or q to exit: ");
-                    setSurnameTeacher();
+                    return setSurnameTeacher();
                 }
             }
 
@@ -199,10 +205,13 @@ class TeacherController implements TeachersViev {
             patronymic = console.nextLine();
             if (patronymic.equals("q"))
                 return "q";
+            if (patronymic.isEmpty())
+            {                    System.out.println("The patronymic must not contain null. Try again or q to exit: ");
+                return setNameTeacher();}
             for (int i = 0; i < patronymic.length(); i++) {
                 if (Character.isDigit(patronymic.charAt(i))) {
                     System.out.println("The patronymic must not contain numbers. Try again or q to exit: ");
-                    setSurnameTeacher();
+                    return setPatronymicTeacher();
                 }
             }
 
